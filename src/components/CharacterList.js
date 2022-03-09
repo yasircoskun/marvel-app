@@ -47,7 +47,7 @@ class CharacterList extends React.Component {
     if (this.state.charaters.length > 0) {
       return (
         <div renderNum={this.state.reRender} className='CharacterList'>
-          {this.state.charaters.map(charater => {
+          {[this.state.charaters[0]].map(charater => {
             return (
               <CharacterCard
                 key={charater.id}
