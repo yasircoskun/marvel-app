@@ -10,9 +10,15 @@ class TabLoader extends React.Component {
   }
 
   async getDataFromUrl(apiUrl) {
+    let ts = Date.now()
     const response = await axios.get(apiUrl, {
       params: {
-        apikey: window.apikey
+        //ts: ts,
+        apikey: window.apikey,
+        //hash: md5(ts + window.apisecretkey + window.apikey)
+      },
+      headers: {
+        Referer: 'localhost'
       }
     });
 
