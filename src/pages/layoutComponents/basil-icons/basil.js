@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState, useEffect } from "react";
 
 const iconStyle = {
   padding: '',
@@ -11,6 +12,10 @@ class Icon extends React.Component {
 
   state = {
     iconRaw: "",
+  }
+
+  componentDidMount() {
+    this.load()
   }
 
   async load(){
@@ -28,8 +33,9 @@ class Icon extends React.Component {
 
 class Outline extends Icon {
   type = "Outline"
+
   render() {
-    this.load()
+
     if (this.props.category == null) {
       return (<></>)
     }
@@ -42,8 +48,9 @@ class Outline extends Icon {
 
 class Solid extends Icon {
   type = "Solid"
+
   render() {
-    this.load()
+
     if (this.props.category == null) {
       return (<></>)
     }
