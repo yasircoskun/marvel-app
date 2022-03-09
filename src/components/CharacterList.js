@@ -33,9 +33,14 @@ class CharacterList extends React.Component {
     }
     return (
     <div>
-      Probably we exceeded marvel api key limit
+      Probably we exceeded marvel api key limit.
+      <br></br>
+      <a href="https://developer.marvel.com">Create a API Key</a>
+      <br></br>
       <input id="apikeyInput" type="text" placeholder='My API Key'></input>
+      <br></br>
       <input id="apisecretInput" type="text" placeholder='My API Secret Key'></input>
+      <br></br>
       <button onClick={this.setApiKey}>Use My API Key</button>
     </div>);
   }
