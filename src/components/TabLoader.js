@@ -12,7 +12,7 @@ class TabLoader extends React.Component {
   async getDataFromUrl(apiUrl) {
     const response = await axios.get(apiUrl, {
       params: {
-        apikey: apikey
+        apikey: window.apikey
       }
     });
 

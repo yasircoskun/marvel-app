@@ -21,7 +21,7 @@ class CharacterList extends React.Component {
         </div>
       );
     }
-    return <div>Not Character to show</div>;
+    return <div>Probably we exceeded marvel api key limit</div>;
   }
 }
 

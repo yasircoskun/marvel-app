@@ -16,7 +16,7 @@ class App extends React.Component {
       params: {
         offset: this.state.offset,
         limit: 30,
-        apikey: apikey
+        apikey: window.apikey
       }
     });
 
@@ -25,6 +25,7 @@ class App extends React.Component {
   }
 
   async componentDidMount() {
+    window.apikey = apikey;
     this.getCharacters()
     var that = this;
     // Scroll Bottom Detection
