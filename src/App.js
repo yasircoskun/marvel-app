@@ -3,7 +3,7 @@ import React from 'react';
 import axios from 'axios';
 import CharacterList from './components/CharacterList';
 import './App.scss'
-import apikey from './apikey';
+import config from './apikey';
 
 class App extends React.Component {
   constructor(props) {
@@ -25,7 +25,8 @@ class App extends React.Component {
   }
 
   async componentDidMount() {
-    window.apikey = apikey;
+    window.apikey = config.apikey;
+    window.apisecret = config.apisecret;
     this.getCharacters()
     var that = this;
     // Scroll Bottom Detection

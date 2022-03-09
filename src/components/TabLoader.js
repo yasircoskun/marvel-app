@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import ScrollList from './ScrollList';
 import apikey from '../apikey';
+import md5 from 'js-md5/src/md5';
 
 class TabLoader extends React.Component {
   constructor(props) {
@@ -10,12 +11,12 @@ class TabLoader extends React.Component {
   }
 
   async getDataFromUrl(apiUrl) {
-    let ts = Date.now()
+    let ts = 1337
     const response = await axios.get(apiUrl, {
       params: {
-        //ts: ts,
+        ts: ts,
         apikey: window.apikey,
-        //hash: md5(ts + window.apisecretkey + window.apikey)
+        hash: md5(ts + window.apisecret + window.apisecret)
       },
       headers: {
         Referer: 'http://localhost:1998/'
