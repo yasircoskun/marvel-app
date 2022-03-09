@@ -9,6 +9,7 @@ class CharacterList extends React.Component {
 
   setApiKey(){
     window.apikey = document.getElementById('apikeyInput').value
+    window.apisecret = document.getElementById('apisecretInput').value
   }
 
   render() {
@@ -34,6 +35,7 @@ class CharacterList extends React.Component {
     <div>
       Probably we exceeded marvel api key limit
       <input id="apikeyInput" type="text" placeholder='My API Key'></input>
+      <input id="apisecretInput" type="text" placeholder='My API Secret Key'></input>
       <button onClick={this.setApiKey}>Use My API Key</button>
     </div>);
   }
