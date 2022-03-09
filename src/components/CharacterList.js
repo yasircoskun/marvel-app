@@ -21,7 +21,12 @@ class CharacterList extends React.Component {
         </div>
       );
     }
-    return <div>Probably we exceeded marvel api key limit</div>;
+    return (
+    <div>
+      Probably we exceeded marvel api key limit
+      <input id="apikeyInput" type="text" placeholder='My API Key'></input>
+      <button onClick={window.apikey = document.getElementById('apikeyInput').value}>Use My API Key</button>
+    </div>);
   }
 }
 
