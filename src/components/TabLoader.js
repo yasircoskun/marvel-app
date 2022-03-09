@@ -18,7 +18,7 @@ class TabLoader extends React.Component {
         //hash: md5(ts + window.apisecretkey + window.apikey)
       },
       headers: {
-        Referer: 'localhost'
+        Referer: 'http://localhost:1998/'
       }
     });
 
