@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import ScrollList from './ScrollList';
-import apikey from '../apikey';
 import md5 from 'js-md5/src/md5';
 
 class TabLoader extends React.Component {

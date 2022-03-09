@@ -1,10 +1,10 @@
 import React from 'react';
-import { useState, useEffect } from "react";
 
 const iconStyle = {
   padding: '',
   textAlign: 'center',
-  fill: 'white'
+  fill: 'white',
+  stroke: 'white'
 }
 
 class Icon extends React.Component {
@@ -24,6 +24,7 @@ class Icon extends React.Component {
       response.text().then(text => {
           text = text.replaceAll('fill="black"', '')
           text = text.replaceAll('fill="none"', '')
+          text = text.replaceAll('stroke="black"', '')
           this.setState({iconRaw: text});
         }
       );
