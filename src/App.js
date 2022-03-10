@@ -7,6 +7,7 @@ import Search from './pages/Search';
 import Share from './pages/Share';
 import Favorites from './pages/Favorites';
 import Profile from './pages/Profile';
+import SignIn from './pages/SignIn';
 import './App.scss'
 import config from './apikey';
 
@@ -31,6 +32,7 @@ class App extends React.Component {
             <Route path="share" element={<Share />} />
             <Route path="favorites" element={<Favorites />} />
             <Route path="profile" element={<Profile />} />
+            <Route path="signin" element={<SignIn />} />
           </Route>
         </Routes>
       </BrowserRouter>

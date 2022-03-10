@@ -1,6 +1,14 @@
-$marvel_red: #8a3636;
-$marvel_red_2: brown;
+// $marvel_red: #8a3636;
+// $marvel_red_2: brown;
+// $marvel_logo_white: #ffffff;
+
+$marvel_red: #000000;
+$marvel_red_2: rgb(19, 19, 19);
 $marvel_logo_white: #ffffff;
+
+h1, h2, h3, h4, h5 {
+  color: inherit;
+}
 
 /* Drawer Begin */
 aside.drawer {
@@ -159,6 +167,7 @@ nav.bottombar {
   bottom: 0;
   background-color: $marvel_red;
   color: $marvel_logo_white;
+  border-top: 2px solid $marvel_red_2;
 }
 
 nav.bottombar ul {
@@ -189,6 +198,35 @@ nav.bottombar li:hover {
   margin-top: 1rem;
 }
 /* Layout End */
+
+/* SignIn Begin */
+.ButtonWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.TwitterBtn {
+  background-color: rgb(29, 155, 240);
+  transition-duration: 0.2s;
+  user-select: none;
+  border-radius: 9999px;
+  padding: 14px 32px;
+  min-height: 52px;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+}
+
+.TwitterBtn:hover {
+  background-color: rgb(26, 140, 216);
+}
+
+.TwitterBtn span, .TwitterBtn div {
+  display: inline-flex;
+}
+/* SignIn End */
 
 .CharacterCard {
   width: 60vw;

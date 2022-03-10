@@ -12,6 +12,10 @@ class Drawer extends React.Component {
     this.drawerButtonRefClicked = this.drawerButtonRefClicked.bind(this);
   }
 
+  state={
+    signedIn: false
+  }
+
   crossRefClicked() {
     this.drawerRef.current.className = this.drawerRef.current.className.replaceAll(' open', '').replaceAll(' close', '');
     this.drawerRef.current.className += ' close';
@@ -46,7 +50,15 @@ class Drawer extends React.Component {
               <Link to="/favorites"><basil.Solid category="Status" name="Heart" /><span>Favorites</span></Link>
             </li>
             <li>
-              <Link to="/profile"><basil.Solid category="Communication" name="User" /><span>Profile</span></Link>
+            <Link
+              to={this.state.signedIn ? "/profile" : "/signin" }>
+                {
+                  this.state.signedIn ? 
+                    <><basil.Solid category="Communication" name="User" /><span>Profile</span></> 
+                  : 
+                    <><basil.Solid category="Interface" name="Login" /><span>Sign In</span></> 
+                }
+            </Link>
             </li>
           </ul>
         </div>
