@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import Search from './pages/Search';
-import Share from './pages/Share';
+import About from './pages/About';
 import Favorites from './pages/Favorites';
 import Profile from './pages/Profile';
 import SignIn from './pages/SignIn';
@@ -26,7 +26,7 @@ class App extends React.Component {
             <Route index element={<Home />} />
             <Route path="comics/:charaterID" element={<Comics />} />
             <Route path="search" element={<Search />} />
-            <Route path="share" element={<Share />} />
+            <Route path="about" element={<About />} />
             <Route path="favorites" element={<Favorites />} />
             <Route path="profile" element={<Profile />} />
             <Route path="signin" element={<SignIn />} />

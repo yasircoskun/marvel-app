@@ -52,27 +52,26 @@ class ComicsComponent extends React.Component {
   async componentDidMount() {
     this.getComics(this.props.params.charaterID)
     this.getCharacter(this.props.params.charaterID)
-    
   }
 
   render() {
     return (<div className="Comics">
       <Thumbnail data={this.state.character.thumbnail}></Thumbnail>
-    <h1>{this.state.character.name}</h1>
-    <p>{this.state.character.description}</p>
-    <h3>Comics featuring the character "{this.state.character.name}":</h3>
-    <ul>
-    
-      {this.state.comics.map(comic => {
-        return (
-          <li>
-            {comic.title}
-          </li>
-        )
-      })}
-    </ul>
+      <h1>{this.state.character.name}</h1>
+      <p>{this.state.character.description}</p>
+      <h3>Comics featuring the character "{this.state.character.name}":</h3>
+      <ul>
+      
+        {this.state.comics.map(comic => {
+          return (
+            <li>
+              {comic.title}
+            </li>
+          )
+        })}
+      </ul>
 
-    <button onClick={() => {window.history.back();}}>Back</button>
+      <button onClick={() => {window.history.back();}}>Back</button>
     </div>)
   }
 }

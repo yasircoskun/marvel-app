@@ -47,7 +47,7 @@ class Drawer extends React.Component {
               <Link to="/search"><basil.Solid category="Interface" name="Search" /><span>Search</span></Link>
             </li>
             <li>
-              <Link to="/share"><basil.Solid category="Communication" name="Share" /><span>Share</span></Link>
+              <Link to="/about"><basil.Solid category="Interface" name="At-sign" /><span>About</span></Link>
             </li>
             {/* <li>
               <Link to="/favorites"><basil.Solid category="Status" name="Heart" /><span>Favorites</span></Link>
