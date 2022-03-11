@@ -10,12 +10,12 @@ class CharacterList extends React.Component {
   }
 
   async getCharacters() {
-    if(!this.state.loading){
-      this.setState({loading: true})
+    if (!this.state.loading) {
+      this.setState({ loading: true })
       const response = await marvel.getCharacters(this.state.offset);
-  
+
       let that = this;
-      setTimeout(()=>{
+      setTimeout(() => {
         that.setState({
           charaters: [...this.state.charaters, ...response.data.data.results],
           offset: this.state.offset += 30,
@@ -26,6 +26,9 @@ class CharacterList extends React.Component {
     }
   }
 
+  async componentWillUnmount(){
+    window.onscroll = null;
+  }
 
   async componentDidMount() {
     this.getCharacters()
@@ -42,23 +45,23 @@ class CharacterList extends React.Component {
   }
 
   render() {
-      return (<>
-        <div className='BasicCharacterList'>
-          {this.state.charaters.map(charater => {
-            return (
-              <Link to={"/comics/"+charater.id}>
-                <BasicCharacterCard
-                  key={charater.id}
-                  name={charater.name}
-                  characterID={charater.id}
-                  data={charater}
-                ></BasicCharacterCard>
-              </Link>
-            );
-          })}
-        </div>
-        {this.state.loading && <h1 className='Loading'>Loading..<br /><img src='/red_search.gif' alt=''/></h1>}
-      </>);
+    return (<>
+      <div className='BasicCharacterList'>
+        {this.state.charaters.map(charater => {
+          return (
+            <Link to={"/comics/" + charater.id}>
+              <BasicCharacterCard
+                key={charater.id}
+                name={charater.name}
+                characterID={charater.id}
+                data={charater}
+              ></BasicCharacterCard>
+            </Link>
+          );
+        })}
+      </div>
+      {this.state.loading && <h1 className='Loading'>Loading..<br /><img src='/red_search.gif' alt='' /></h1>}
+    </>);
   }
 }
 

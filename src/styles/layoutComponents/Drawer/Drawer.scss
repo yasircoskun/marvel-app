@@ -1,0 +1,102 @@
+aside.drawer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 300px;
+  background-color: $marvel_red;
+  color: $marvel_logo_white;
+  z-index: 2;
+  border-right: 2px solid $marvel_red_2;
+  .drawerWrapper {
+    position: relative;
+    height: 100vh;
+    .cross div {
+      position: absolute;
+      padding: 0.4em;
+      right: 0;
+      top: 0;
+      cursor: pointer;
+    }
+    ul {
+      display: flex;
+      flex-wrap: nowrap;
+      flex-direction: column;
+      justify-content: space-around;
+      padding: 0;
+      margin: 0;
+      li {
+        display: flex;
+        padding: 0.4rem 4rem 0.4rem 1rem;
+        text-align: center;
+        a {
+          display: flex;
+          color: $marvel_logo_white;
+          span,
+          div {
+            display: inline-flex;
+          }
+          span {
+            padding: 0.25em;
+          }
+        }
+      }
+      li:hover {
+        background-color: $marvel_red_2;
+      }
+    }
+    .drawerLogo {
+      text-align: center;
+      padding: 1rem;
+      border-bottom: 2px solid $marvel_red_2;
+      margin-bottom: 1rem;
+      img {
+        width: 60%;
+      }
+    }
+    .drawerFooter {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      padding: 1rem 0;
+      border-top: 2px solid $marvel_red_2;
+      img {
+        width: 30%;
+      }
+      .drawerFooterText {
+        font-size: larger;
+        font-weight: bold;
+        padding: 0.3em 0;
+      }
+    }
+  }
+}
+
+.drawerButton {
+  position: absolute;
+  opacity: 1;
+  display: block;
+  left: 1em;
+  top: 1em;
+  background-color: $marvel_red;
+  padding: 0.5rem;
+  border: 2px solid $marvel_red_2;
+}
+
+.drawerButton.fixed {
+  position: fixed;
+}
+
+@media (max-width: 768px) {
+  aside.drawer {
+    width: 100vw;
+  }
+}
+
+.invertColor {
+  -webkit-filter: invert(100%);
+  filter: invert(100%);
+}

@@ -2,151 +2,129 @@
 
 .About {
   transform: translateY(-13vw);
-  margin: .2rem 20vw;
+  margin: 0.2rem 20vw;
+  h3 {
+    margin-top: 3rem;
+    margin-bottom: 0.2rem;
+    text-align: center;
+  }
+  .profilePhoto {
+    position: relative;
+    img {
+      border-width: 3px;
+      border-image: linear-gradient(
+        45deg,
+        rgb(45, 45, 45) 0%,
+        rgb(138, 40, 40) 100%
+      );
+      border-image-slice: 100%;
+      border-image-slice: 9;
+      border-style: solid;
+    }
+  }
+  .profilePhoto:after {
+    position: absolute;
+    content: "";
+    display: block;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to bottom, rgba(130, 0, 0, 0.21) 25%, black 100%);
+    mix-blend-mode: darken;
+  }
+  ul{
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+    margin: 0 auto;
+  }
+  ul.TweetList {
+    li {
+      padding: 0.2rem 4rem 0.2rem 1rem;
+      text-align: left;
+      list-style-type: none;
+      display: flex;
+      flex-direction: column;
+      background-color: #000000;
+      padding: 0.5rem;
+      border: 2px solid #131313;
+      margin-bottom: 0.5rem;
+      div {
+        display: flex;
+        margin-bottom: 1em;
+        a {
+          background: conic-gradient(from 45deg, #3e2c68, #8a2828);
+          padding: 1px;
+          border-radius: 50%;
+          display: block;
+          img {
+            border-radius: 50%;
+            display: block;
+          }
+        }
+      }
+      a {
+        display: contents;
+      }
+    }
+  }
+  .OSINT li {
+    text-align: left;
+    padding: 0 0.5rem;
+    background-color: #000000;
+    padding: 0.5rem;
+    border: 2px solid #222222;
+    margin-bottom: 0.2rem;
+    list-style-type: none;
+    a {
+      text-decoration: none;
+      color: whitesmoke;
+    }
+  }
+  .BlogButton {
+    background-color: #000000;
+    padding: 0.5rem;
+  
+    text-decoration: none;
+  
+    background: linear-gradient(to bottom, #2d2d2d 0%, #8a2828 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  
+    margin: 4rem auto;
+  
+    border-width: 3px;
+    border-image: linear-gradient(45deg, #2d2d2d 0%, #8a2828 100%);
+    border-image-slice: 100%;
+    border-image-slice: 100%;
+    border-image-slice: 9;
+    border-style: solid;
+  }
 }
 
-.About .profilePhoto img {
-  border-width: 3px;
-border-image: linear-gradient(45deg, rgb(45, 45, 45) 0%, rgb(138, 40, 40) 100%);
-  border-image-slice: 100%;
-border-image-slice: 9;
-border-style: solid;
-}
-
-.About .profilePhoto {
-  position: relative;
-}
-
-.About .profilePhoto:after {
-  position: absolute;
-  content: "";
-  display: block;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: linear-gradient(to bottom, rgba(130, 0, 0, 0.21) 25%, black 100%);
-  mix-blend-mode: darken;
-}
-
-.Header {
-  height: 40vh !important;
-}
-
-
-
-
-.About h3 {
-  margin-top: 3rem;
-  margin-bottom: .2rem;
-  text-align: center;
-}
-
-.About ul.TweetList {
-  display: flex;
-  flex-direction: column;
-  width: 40vw;
-  margin: 0 auto;
-}
-
-.About ul.TweetList li {
-  padding: 0.2rem 4rem 0.2rem 1rem;
-  text-align: left;
-  list-style-type: none;
-  display: flex;
-  flex-direction: column;
-  background-color: #000000;
-  padding: 0.5rem;
-  border: 2px solid #131313;
-  margin-bottom:.5rem;
-}
-
-.About ul.TweetList li div {
-  display: flex;
-}
-.About ul.TweetList li a {
-  display: inline;
-}
-
-.About ul.TweetList li div a {
-  background: conic-gradient(from 45deg, #2d2d2d  , #8a2828 );
-  padding: 2px;
-  border-radius: 50%;
-}
-
-.About ul.TweetList li div a img {
-  border-radius: 50%;
-  display: block;
-}
-
-.About .OSINT ul {
-  list-style-type: none;
-display: flex;
-flex-direction: column;
-width: 40vw;
-margin: 0 auto;
-}
-
-.About .OSINT li {
-  text-align: left;
-  padding: 0 .5rem;
-  background-color: #000000;
-  padding: 0.5rem;
-  border: 2px solid #222222;
-  margin-bottom: .2rem;
-}
-
-.About .OSINT li a {
-  text-decoration: none;
-  color: whitesmoke;
-}
 
 @media (max-width: 768px) {
   .About {
-    //translate: 0 -5%;
     transform: translateY(-0%);
-    margin: .2rem .2rem;
+    margin: 0.2rem 0.2rem;
+    .OSINT ul {
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto;
+      list-style-type: none;
+      width: auto;
+      margin: auto auto;
+      padding: 0;
+    }
+    ul.TweetList {
+      width: auto;
+      margin: auto auto;
+      padding: 0;
+    }
+    .profilePhoto img {
+      width: 80vw;
+    }
   }
-
-  .About .OSINT ul {
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    list-style-type: none;
-    width: auto;
-    margin: auto auto;
-    padding: 0;
-  }
-
-  .About ul.TweetList {
-    width: auto;
-    margin: auto auto;
-    padding: 0;
-  }
-
-  .About .profilePhoto img {
-    width: 80vw;
-    
-  }
-}
-
-.About .BlogButton {
-  background-color: #000000;
-  padding: 0.5rem;
-
-  text-decoration: none;
-
-  background: linear-gradient(to bottom, #2d2d2d 0%, #8a2828 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  margin: 4rem auto;
-
-  border-width: 3px;
-  border-image: linear-gradient(45deg, #2d2d2d 0%, #8a2828 100%);
-  border-image-slice: 100%;
-  border-image-slice: 100%;
-  border-image-slice: 9;
-  border-style: solid;
 }

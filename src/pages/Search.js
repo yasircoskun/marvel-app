@@ -35,6 +35,9 @@ class Search extends React.Component {
     }
   }
 
+  async componentWillUnmount(){
+    window.onscroll = null;
+  }
 
   async componentDidMount() {
     var that = this;

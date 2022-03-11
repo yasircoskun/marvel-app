@@ -15,13 +15,11 @@
   font-weight: bold;
   cursor: pointer;
   display: flex;
+  span, div {
+    display: inline-flex;
+  }
 }
 
 .TwitterBtn:hover {
   background-color: rgb(26, 140, 216);
-}
-
-.TwitterBtn span,
-.TwitterBtn div {
-  display: inline-flex;
 }

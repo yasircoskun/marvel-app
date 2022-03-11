@@ -3,76 +3,70 @@
   flex-wrap: wrap;
   padding: 0 15vw;
   justify-content: center;
-}
-
-.BasicCharacterCard {
-  position: relative;
-  padding: 0;
-  margin: 0.5em;
-  border: 0.2em solid #00000000;
-  color: white;
-  font-size: large;
-  height: 400px;
-  border-radius: 0 0 15px 15px;
-  overflow: hidden;
+  .BasicCharacterCard {
+    position: relative;
+    padding: 0;
+    margin: 0.5em;
+    border: 0.2em solid #00000000;
+    color: white;
+    font-size: large;
+    height: 400px;
+    border-radius: 0 0 15px 15px;
+    overflow: hidden;
+    .BasicCardTitle {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: #00000080;
+      padding: 1rem;
+      h4 {
+        margin: 0;
+      }
+    }
+    .BasicCardTitle { //Cut Corner
+      -webkit-clip-path:  polygon(
+        0 0,
+        0 80%,
+        15% 100%,
+        85% 100%,
+        100% 80%,
+        100% 0
+      );
+      clip-path: polygon(
+        0 0,
+        0 80%,
+        15% 100%,
+        85% 100%,
+        100% 80%,
+        100% 0
+      );
+    }
+    .Thumbnail {
+      height: inherit;
+      width: inherit;
+      img {
+        height: inherit;
+        width: inherit;
+      }
+    }
+  }
+  .BasicCharacterCard:hover {
+    border: 0.2em solid $active_color;
+    border-top-width: 0;
+    color: white;
+    .BasicCardTitle {
+      background-color: $active_color;
+    }
+  }
 }
 
 @media (max-width: 768px) {
   .BasicCharacterList {
     padding: 0;
+    .BasicCharacterCard {
+      width: 90vw;
+      height: auto;
+    }
   }
-  .BasicCharacterCard {
-    width: 90vw;
-    height: auto;
-  }
 }
-
-.BasicCharacterCard:hover {
-  border: 0.2em solid $active_color;
-  border-top-width: 0;
-  color: white;
-}
-
-.BasicCardTitle {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: #00000080;
-  padding: 1rem;
-}
-
-.BasicCardTitle h4 {
-  margin: 0;
-}
-
-.BasicCharacterCard:hover .BasicCardTitle {
-  background-color: $active_color;
-}
-
-.BasicCharacterCard .Thumbnail,
-.BasicCharacterCard .Thumbnail img {
-  height: inherit;
-  width: inherit;
-}
-
-// cut corner
-.BasicCharacterCard .BasicCardTitle {
-  -webkit-clip-path:  polygon(
-    0 0,
-    0 80%,
-    15% 100%,
-    85% 100%,
-    100% 80%,
-    100% 0
-  );
-  clip-path: polygon(
-    0 0,
-    0 80%,
-    15% 100%,
-    85% 100%,
-    100% 80%,
-    100% 0
-  );
-}
-

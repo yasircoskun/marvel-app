@@ -1,0 +1,75 @@
+@keyframes drawerCloseAnim {
+  100% {
+    transform: translateX(-300px);
+  }
+}
+
+@keyframes drawerOpenAnim {
+  0% {
+    transform: translateX(-300px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes drawerButtonVisible {
+  0% {
+    opacity: 0;
+    display: block;
+  }
+  100% {
+    opacity: 1;
+    display: block;
+  }
+}
+
+@keyframes drawerButtonInvisible {
+  0% {
+    opacity: 1;
+    display: block;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  @keyframes drawerCloseAnim {
+    100% {
+      transform: translateX(-100vw);
+    }
+  }
+
+  @keyframes drawerOpenAnim {
+    0% {
+      transform: translateX(-100vw);
+    }
+    100% {
+      transform: translateX(0vw);
+    }
+  }
+}
+
+aside.drawer.close {
+  animation: drawerCloseAnim 2s;
+  animation-fill-mode: forwards;
+}
+
+aside.drawer.open {
+  animation: drawerOpenAnim 2s;
+  animation-fill-mode: forwards;
+}
+
+.drawerButton.visible {
+  animation: drawerButtonVisible 2s;
+  animation-fill-mode: forwards;
+  display: block;
+}
+
+.drawerButton.invisible {
+  animation: drawerButtonInvisible 2s;
+  animation-fill-mode: forwards;
+  display: block;
+}
