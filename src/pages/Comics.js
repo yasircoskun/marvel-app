@@ -4,6 +4,7 @@ import config from "../apikey";
 import axios from "axios";
 import md5 from 'js-md5/src/md5';
 import Thumbnail from "../components/Thumbnail";
+import './../styles/pages/Comics.scss';
 
 class ComicsComponent extends React.Component {
   state={
@@ -59,14 +60,19 @@ class ComicsComponent extends React.Component {
       <Thumbnail data={this.state.character.thumbnail}></Thumbnail>
     <h1>{this.state.character.name}</h1>
     <p>{this.state.character.description}</p>
+    <h3>Comics featuring the character {this.state.character.name}:</h3>
+    <ul>
     
-    {this.state.comics.map(comic => {
-      return (
-        <li>
-          {comic.title}
-        </li>
-      )
-    })}
+      {this.state.comics.map(comic => {
+        return (
+          <li>
+            {comic.title}
+          </li>
+        )
+      })}
+    </ul>
+
+    <button onClick={() => {window.history.back();}}>Back</button>
     </div>)
   }
 }
