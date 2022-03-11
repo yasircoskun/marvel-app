@@ -1,6 +1,6 @@
 const config = {
-  apikey: "d818f91776b31cd8e953e3cc10ec8d03",
-  apisecret: "393a2b98b1ff773eb73157ee700695ea60e8edc1"
+  apikey: "c3ef50f069c4964cd266554c2d9ab24f",
+  apisecret: "163fa97c66fb3b60125f1818ec63d2dd109db4fd"
 }
 
 export default config

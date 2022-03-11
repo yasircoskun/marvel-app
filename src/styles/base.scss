@@ -1,0 +1,28 @@
+body {
+  background-color: #000000;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: inherit;
+}
+
+.AppContainer {
+  text-align: center;
+  margin-top: 1rem;
+  color: $marvel_logo_white;
+}
+
+.Loading {
+  color: $active_color
+}
+
+@media (max-width: 768px) {
+  .Loading img {
+    width: 100%;
+  }
+}

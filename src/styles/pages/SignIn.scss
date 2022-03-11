@@ -1,0 +1,27 @@
+.ButtonWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.TwitterBtn {
+  background-color: rgb(29, 155, 240);
+  transition-duration: 0.2s;
+  user-select: none;
+  border-radius: 9999px;
+  padding: 14px 32px;
+  min-height: 52px;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+}
+
+.TwitterBtn:hover {
+  background-color: rgb(26, 140, 216);
+}
+
+.TwitterBtn span,
+.TwitterBtn div {
+  display: inline-flex;
+}

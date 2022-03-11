@@ -3,7 +3,7 @@ import CharacterList from './../components/CharacterList';
 
 const Home = () => {
   return (
-      <Gifs />
+      <CharacterList />
   );
 };
 

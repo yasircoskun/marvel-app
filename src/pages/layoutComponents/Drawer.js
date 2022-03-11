@@ -36,6 +36,9 @@ class Drawer extends React.Component {
       <aside className="drawer close" ref={this.drawerRef}>
         <div className="drawerWrapper">
           <span className="cross" ref={this.crossRef} onClick={this.crossRefClicked}><basil.Outline category="Interface" name="Cross" /></span>
+          <div className="drawerLogo">
+            <img src="/Marvel Studio.png" alt="" />
+          </div>
           <ul>
             <li>
               <Link to="/"><basil.Solid category="General" name="Home" /><span>Home</span></Link>
@@ -46,21 +49,25 @@ class Drawer extends React.Component {
             <li>
               <Link to="/share"><basil.Solid category="Communication" name="Share" /><span>Share</span></Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/favorites"><basil.Solid category="Status" name="Heart" /><span>Favorites</span></Link>
             </li>
             <li>
-            <Link
-              to={this.state.signedIn ? "/profile" : "/signin" }>
-                {
-                  this.state.signedIn ? 
-                    <><basil.Solid category="Communication" name="User" /><span>Profile</span></> 
-                  : 
-                    <><basil.Solid category="Interface" name="Login" /><span>Sign In</span></> 
-                }
-            </Link>
-            </li>
+              <Link
+                to={this.state.signedIn ? "/profile" : "/signin" }>
+                  {
+                    this.state.signedIn ? 
+                      <><basil.Solid category="Communication" name="User" /><span>Profile</span></> 
+                    : 
+                      <><basil.Solid category="Interface" name="Login" /><span>Sign In</span></> 
+                  }
+              </Link>
+            </li> */}
           </ul>
+          <div className="drawerFooter">
+            <span className="drawerFooterText">Powered By </span>
+            <img className="invertColor" src="/stark.png" alt="" />
+          </div>
         </div>
       </aside>
     </>);

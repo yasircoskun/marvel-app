@@ -1,6 +1,9 @@
 import axios from 'axios';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import GifCard from '../components/GifCard';
+import BasicCharacterCard from './../components/BasicCharacterCard';
+import config from '../apikey';
 
 class Search extends React.Component {
   constructor(props) {
@@ -10,31 +13,31 @@ class Search extends React.Component {
     //this.searchBtnRefClicked = this.searchBtnRefClicked.bind(this);
     this.state = {
       query: null,
-      gifs: null,
-      offset: 0
+      result: [],
+      offset: 0,
+      loading: false
     }
   }
 
-
-
   async search(){
-
     await this.setState({ query: this.queryRef.current.value });
-
-    await this.getGifs()
-
+    await this.getSearchResult()
   }
 
-  async getGifs() {
-    const response = await axios.get('https://api.giphy.com/v1/gifs/search?sort=recent&q='+this.state.query+'&api_key=sXpGFDGZs0Dv1mmNFvYaGUvYwKX0PWIh&pingback_id=17f717d860f3f3f0', {
+  async getSearchResult() {
+    this.setState({loading: true})
+    const response = await axios.get('https://gateway.marvel.com:443/v1/public/characters', {
       params: {
         offset: this.state.offset,
-        // limit: 30,
-        // apikey: window.apikey
+        nameStartsWith: this.state.query,
+        apikey: config.apikey,
+        limit: 30
       }
     });
-
-    this.setState({ gifs: response.data.data, offset: this.state.offset += 25 });
+    let that = this;
+    setTimeout(()=>{
+      that.setState({ result: [...that.state.result, ...response.data.data.results], offset: this.state.offset += 30 });
+    }, 1500);
   }
 
 
@@ -43,8 +46,9 @@ class Search extends React.Component {
     // Scroll Bottom Detection
     window.onscroll = async function (ev) {
       if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-        that.getGifs();
-        window.scrollTo(0, 0);
+        if(that.state.query != null)
+        that.getSearchResult();
+        //window.scrollTo(0, 0);
       }
     };
   }
@@ -59,19 +63,24 @@ class Search extends React.Component {
         </>
       )
     }else{
-      if(this.state.gifs != null){
-        return (
-          <div className='CharacterList'>
-            {this.state.gifs.map(gif => {
+        console.log(this.state.result)
+        return (<>
+          <div renderNum={this.state.reRender} className='BasicCharacterList'>
+            {this.state.result.map(charater => {
               return (
-                <GifCard gifUrl={gif.images.original.mp4}></GifCard>
+                <Link to={"/comics/"+charater.id}>
+                  <BasicCharacterCard
+                    key={charater.id}
+                    name={charater.name}
+                    characterID={charater.id}
+                    data={charater}
+                  ></BasicCharacterCard>
+                </Link>
               );
             })}
           </div>
-        );
-      }else{
-        return (<h1>Loading...</h1>)
-      }
+          {this.state.loading && <h1 className='Loading'>Loading..<br /><img src='/search.gif' alt=''/></h1>}
+        </>);
 
     }
 

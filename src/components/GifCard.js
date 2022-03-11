@@ -2,6 +2,12 @@ import React from 'react';
 import TabLoader from './TabLoader';
 
 class GifCard extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+
+
   async componentDidMount() {
     document.body.style.background = '#000';
     document.body.style.color = '#fff';
@@ -14,7 +20,7 @@ class GifCard extends React.Component {
   render() {
     return (
       <div className="CharacterCard" style={{height: '84vh', margin: '0.4rem 0vw', padding: '2rem 0rem',   width: '100vw', background: "#000000"}}>
-        <video autoplay="true" loop="true" src={this.props.gifUrl} alt="." style={{width: '100%'}}></video>
+        <video autoplay="false" loop="true" src={this.props.gifUrl} alt="." style={{width: '100%'}}></video>
       </div>
     );
   }

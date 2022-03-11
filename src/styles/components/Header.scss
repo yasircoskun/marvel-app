@@ -1,0 +1,8 @@
+.Header {
+  background-image: url('./../../../public/header-heroes.png');
+  background-size: cover;
+  background-position: bottom;
+  width: 100vw;
+  height: $header_height;
+  border-bottom: 2px solid $marvel_red_2;
+}
