@@ -1,3 +1,7 @@
+*{
+  user-select: none;
+}
+
 body {
   background-color: #000000;
   overflow-x: hidden;
@@ -15,19 +19,21 @@ h5 {
   text-align: center;
   margin-top: 1rem;
   color: $marvel_logo_white;
+  translate: 0 -15vh;
 }
 
 .Loading {
-  color: $active_color
+  color: white;
 }
 
-button {
+button, input {
   background-color: #000000;
   padding: 0.5rem;
   border: 2px solid #222222;
   color: white;
   font-size: large;
   margin: 1rem;
+  pointer-events: all;
 }
 
 @media (max-width: 768px) {

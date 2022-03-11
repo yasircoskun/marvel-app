@@ -36,7 +36,7 @@ class CharacterList extends React.Component {
           loading: false
         });
         console.log(this.state.charaters)
-      }, 1500000000);
+      }, 1500);
     }
 
   }
