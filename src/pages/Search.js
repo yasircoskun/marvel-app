@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import GifCard from '../components/GifCard';
 import BasicCharacterCard from './../components/BasicCharacterCard';
 import config from '../apikey';
+import md5 from 'js-md5/src/md5';
 
 class Search extends React.Component {
   constructor(props) {
@@ -25,19 +26,26 @@ class Search extends React.Component {
   }
 
   async getSearchResult() {
-    this.setState({loading: true})
-    const response = await axios.get('https://gateway.marvel.com:443/v1/public/characters', {
-      params: {
-        offset: this.state.offset,
-        nameStartsWith: this.state.query,
-        apikey: config.apikey,
-        limit: 30
-      }
-    });
-    let that = this;
-    setTimeout(()=>{
-      that.setState({ result: [...that.state.result, ...response.data.data.results], offset: this.state.offset += 30 });
-    }, 1500);
+    if(!this.state.loading){
+      this.setState({loading: true})
+      let ts = 1337;
+      const response = await axios.get('https://gateway.marvel.com:443/v1/public/characters', {
+        params: {
+          offset: this.state.offset,
+          nameStartsWith: this.state.query,
+          apikey: config.apikey,
+          limit: 30,
+          hash: md5(ts + config.apisecret + config.apikey)
+        },
+        headers: {
+          Referer: 'http://localhost:1998/'
+        }
+      });
+      let that = this;
+      setTimeout(()=>{
+        that.setState({ result: [...that.state.result, ...response.data.data.results], offset: this.state.offset += 30, loading: false });
+      }, 1500);
+    }
   }
 
 
@@ -65,7 +73,7 @@ class Search extends React.Component {
     }else{
         console.log(this.state.result)
         return (<>
-          <div renderNum={this.state.reRender} className='BasicCharacterList'>
+          <div className='BasicCharacterList'>
             {this.state.result.map(charater => {
               return (
                 <Link to={"/comics/"+charater.id}>
