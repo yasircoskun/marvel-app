@@ -63,14 +63,15 @@ border-style: solid;
 
 .About ul.TweetList li div {
   display: flex;
-  
+}
+.About ul.TweetList li a {
+  display: inline;
 }
 
 .About ul.TweetList li div a {
   background: conic-gradient(from 45deg, #2d2d2d  , #8a2828 );
   padding: 2px;
   border-radius: 50%;
-  display: inline;
 }
 
 .About ul.TweetList li div a img {
