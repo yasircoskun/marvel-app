@@ -71,6 +71,7 @@ border-style: solid;
   background: conic-gradient(from 45deg, #2d2d2d  , #8a2828 );
   padding: 2px;
   border-radius: 50%;
+  display: inline;
 }
 
 .About ul.TweetList li div a img {
@@ -79,15 +80,25 @@ border-style: solid;
 }
 
 .About .OSINT ul {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
   list-style-type: none;
+display: flex;
+flex-direction: column;
+width: 40vw;
+margin: 0 auto;
 }
 
 .About .OSINT li {
   text-align: left;
   padding: 0 .5rem;
+  background-color: #000000;
+  padding: 0.5rem;
+  border: 2px solid #222222;
+  margin-bottom: .2rem;
+}
+
+.About .OSINT li a {
+  text-decoration: none;
+  color: whitesmoke;
 }
 
 @media (max-width: 768px) {
@@ -97,7 +108,17 @@ border-style: solid;
     margin: .2rem .2rem;
   }
 
-  .About ul.TweetList, .About ul{
+  .About .OSINT ul {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    list-style-type: none;
+    width: auto;
+    margin: auto auto;
+    padding: 0;
+  }
+
+  .About ul.TweetList {
     width: auto;
     margin: auto auto;
     padding: 0;
@@ -107,6 +128,24 @@ border-style: solid;
     width: 80vw;
     
   }
+}
 
+.About .BlogButton {
+  background-color: #000000;
+  padding: 0.5rem;
 
+  text-decoration: none;
+
+  background: linear-gradient(to bottom, #2d2d2d 0%, #8a2828 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  margin: 4rem auto;
+
+  border-width: 3px;
+  border-image: linear-gradient(45deg, #2d2d2d 0%, #8a2828 100%);
+  border-image-slice: 100%;
+  border-image-slice: 100%;
+  border-image-slice: 9;
+  border-style: solid;
 }

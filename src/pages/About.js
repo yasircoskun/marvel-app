@@ -37,6 +37,8 @@ class About extends React.Component {
       </div>
       <h1>{this.author}</h1>
 
+      <a href="https://yasircoskun.github.io" className='BlogButton'>yasircoskun.github.io</a>
+   
       <h3>Last Tweets:</h3>
       <ul className='TweetList'>
         {this.state.tweets.map(tweet => {
