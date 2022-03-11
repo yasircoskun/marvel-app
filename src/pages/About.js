@@ -8,7 +8,8 @@ class About extends React.Component {
 
   state = {
     tweets: [],
-    OSINT: ""
+    OSINT: "",
+    profile_image: ""
   }
 
   async getTweets() {
@@ -26,14 +27,20 @@ class About extends React.Component {
   }
 
   async componentDidMount() {
-    this.getTweets()
+    await this.getTweets()
+    let contentHTML = this.state.tweets[0].content_encoded;
+    let profile_image = contentHTML.substring(contentHTML.indexOf('https://pbs'), contentHTML.indexOf('.jpg') + 4)
+    profile_image = profile_image.replace('normal', '400x400');
+    this.setState({
+      profile_image: profile_image
+    })
     this.getOSINT()
   }
 
   render() {
     return (<div className="About">
       <div className='profilePhoto'>
-        <img src="https://pbs.twimg.com/profile_images/1447399572414812168/jxno6RBR_400x400.jpg" alt="profile" />
+        <img src={this.state.profile_image} alt="profile" />
       </div>
       <h1>{this.author}</h1>
 
@@ -43,7 +50,7 @@ class About extends React.Component {
       <ul className='TweetList'>
         {this.state.tweets.map(tweet => {
           return (
-            <li dangerouslySetInnerHTML={{ __html: tweet.content_encoded }}>
+            <li key={tweet.pubDate} dangerouslySetInnerHTML={{ __html: tweet.content_encoded }}>
             </li>
           )
         })}
