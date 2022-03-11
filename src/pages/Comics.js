@@ -3,10 +3,12 @@ import React from 'react';
 import config from "../apikey";
 import axios from "axios";
 import md5 from 'js-md5/src/md5';
+import Thumbnail from "../components/Thumbnail";
 
 class ComicsComponent extends React.Component {
   state={
-    comics: []
+    comics: [],
+    character: {}
   }
 
   async getCharacter(characterID) {
@@ -14,7 +16,6 @@ class ComicsComponent extends React.Component {
     let ts = 1337;
     const response = await axios.get('https://gateway.marvel.com:443/v1/public/characters/' + characterID, {
       params: {
-        offset: this.state.offset,
         apikey: config.apikey,
         hash: md5(ts + config.apisecret + config.apikey)
       },
@@ -23,7 +24,7 @@ class ComicsComponent extends React.Component {
       }
     });
     this.setState({
-      comics: [...response.data.data.results],
+      character: response.data.data.results[0],
     });
   }
 
@@ -49,11 +50,16 @@ class ComicsComponent extends React.Component {
 
   async componentDidMount() {
     this.getComics(this.props.params.charaterID)
+    this.getCharacter(this.props.params.charaterID)
+    
   }
 
   render() {
     return (<div className="Comics">
-    <h1>{this.props.params.charaterID}</h1>
+      <Thumbnail data={this.state.character.thumbnail}></Thumbnail>
+    <h1>{this.state.character.name}</h1>
+    <p>{this.state.character.description}</p>
+    
     {this.state.comics.map(comic => {
       return (
         <li>
