@@ -2,6 +2,13 @@
   user-select: none;
 }
 
+@font-face {
+  font-family: 'PalookaBold';
+  src: url('./../../public/PalookaBold.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   background-color: #000000;
   overflow-x: hidden;
@@ -9,10 +16,12 @@ body {
 
 h1,
 h2,
-h3,
 h4,
 h5 {
   color: inherit;
+  font-family: PalookaBold;
+  font-size: 1.9rem;
+  text-shadow: 1px 1px 1px gray;
 }
 
 .AppContainer {
