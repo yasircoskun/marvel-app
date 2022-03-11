@@ -1,10 +1,7 @@
 import React from 'react';
-import CharacterCard from './CharacterCard';
 import BasicCharacterCard from './BasicCharacterCard';
-import axios from 'axios';
-import config from '../apikey';
 import { Link } from 'react-router-dom';
-import md5 from 'js-md5/src/md5';
+import marvel from '../services/marvel'
 
 class CharacterList extends React.Component {
   constructor(props) {
@@ -15,18 +12,7 @@ class CharacterList extends React.Component {
   async getCharacters() {
     if(!this.state.loading){
       this.setState({loading: true})
-      let ts = 1337;
-      const response = await axios.get('https://gateway.marvel.com:443/v1/public/characters', {
-        params: {
-          offset: this.state.offset,
-          limit: 30,
-          apikey: config.apikey,
-          hash: md5(ts + config.apisecret + config.apikey)
-        },
-        headers: {
-          Referer: 'http://localhost:1998/'
-        }
-      });
+      const response = await marvel.getCharacters(this.state.offset);
   
       let that = this;
       setTimeout(()=>{
@@ -38,7 +24,6 @@ class CharacterList extends React.Component {
         console.log(this.state.charaters)
       }, 1500);
     }
-
   }
 
 

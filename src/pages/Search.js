@@ -1,10 +1,7 @@
-import axios from 'axios';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import GifCard from '../components/GifCard';
+import marvel from '../services/marvel';
 import BasicCharacterCard from './../components/BasicCharacterCard';
-import config from '../apikey';
-import md5 from 'js-md5/src/md5';
 
 class Search extends React.Component {
   constructor(props) {
@@ -28,19 +25,9 @@ class Search extends React.Component {
   async getSearchResult() {
     if(!this.state.loading){
       this.setState({loading: true})
-      let ts = 1337;
-      const response = await axios.get('https://gateway.marvel.com:443/v1/public/characters', {
-        params: {
-          offset: this.state.offset,
-          nameStartsWith: this.state.query,
-          apikey: config.apikey,
-          limit: 30,
-          hash: md5(ts + config.apisecret + config.apikey)
-        },
-        headers: {
-          Referer: 'http://localhost:1998/'
-        }
-      });
+
+      const response = await marvel.getCharacterByNameStartWith(this.state.query, this.state.offset)
+
       let that = this;
       setTimeout(()=>{
         that.setState({ result: [...that.state.result, ...response.data.data.results], offset: this.state.offset += 30, loading: false });

@@ -10,7 +10,6 @@ import Profile from './pages/Profile';
 import SignIn from './pages/SignIn';
 import Comics from './pages/Comics';
 import './styles/main.scss'
-import config from './apikey';
 
 class App extends React.Component {
   constructor(props) {

@@ -1,7 +1,7 @@
 import React from 'react';
-import axios from "axios";
-import './../styles/pages/About.scss';
 import { marked } from 'marked';
+import about_services from '../services/about';
+import './../styles/pages/About.scss';
 
 class About extends React.Component {
   author = "Yasir Coşkun"
@@ -13,14 +13,14 @@ class About extends React.Component {
   }
 
   async getTweets() {
-    const response = await axios.get('https://cdn.feedcontrol.net/5188/5099-VHlr7YvZajgsB.json');
+    const response = await about_services.getTweets();
     this.setState({
       tweets: response.data.rss.channel.item,
     });
   }
 
   async getOSINT() {
-    const response = await axios.get('https://raw.githubusercontent.com/yasircoskun/yasircoskun.github.io/master/contents/OSINT.md');
+    const response = await about_services.getOSINT();
     this.setState({
       OSINT: response.data,
     });

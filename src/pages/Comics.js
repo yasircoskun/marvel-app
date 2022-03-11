@@ -1,9 +1,8 @@
 import { useParams } from "react-router-dom";
 import React from 'react';
-import config from "../apikey";
-import axios from "axios";
-import md5 from 'js-md5/src/md5';
+
 import Thumbnail from "../components/Thumbnail";
+import marvel from '../services/marvel'
 import './../styles/pages/Comics.scss';
 
 class ComicsComponent extends React.Component {
@@ -14,16 +13,7 @@ class ComicsComponent extends React.Component {
 
   async getCharacter(characterID) {
     this.setState({ loading: true })
-    let ts = 1337;
-    const response = await axios.get('https://gateway.marvel.com:443/v1/public/characters/' + characterID, {
-      params: {
-        apikey: config.apikey,
-        hash: md5(ts + config.apisecret + config.apikey)
-      },
-      headers: {
-        Referer: 'http://localhost:1998/'
-      }
-    });
+    const response = await marvel.getCharacterById(characterID);
     this.setState({
       character: response.data.data.results[0],
     });
@@ -31,19 +21,7 @@ class ComicsComponent extends React.Component {
 
   async getComics(characterID) {
     this.setState({ loading: true })
-    let ts = 1337;
-    const response = await axios.get('https://gateway.marvel.com:443/v1/public/characters/' + characterID + '/comics', {
-      params: {
-        offset: this.state.offset,
-        limit: 10,
-        orderBy: 'focDate',
-        apikey: config.apikey,
-        hash: md5(ts + config.apisecret + config.apikey)
-      },
-      headers: {
-        Referer: 'http://localhost:1998/'
-      } 
-    });
+    const response = await marvel.getComicsByCharacterId(characterID)
     this.setState({
       comics: [...response.data.data.results],
     });
