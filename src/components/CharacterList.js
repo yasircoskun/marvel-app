@@ -21,7 +21,7 @@ class CharacterList extends React.Component {
           offset: this.state.offset,
           limit: 30,
           apikey: config.apikey,
-          //hash: md5(ts + config.apisecret + config.apikey)
+          hash: md5(ts + config.apisecret + config.apikey)
         },
         headers: {
           Referer: 'http://localhost:1998/'
