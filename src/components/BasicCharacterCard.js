@@ -27,7 +27,7 @@ class CharacterCard extends React.Component {
     return (
       <div id={'CharacterCard_' + this.props.characterID} className="BasicCharacterCard">
         <Thumbnail data={this.props.data.thumbnail}></Thumbnail>
-        <div className='BasicCardTitle'>{this.props.name}</div>
+        <div className='BasicCardTitle'><h4>{this.props.name}</h4></div>
       </div>
     );
   }

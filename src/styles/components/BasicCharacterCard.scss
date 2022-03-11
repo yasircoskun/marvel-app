@@ -42,6 +42,10 @@
   padding: 1rem;
 }
 
+.BasicCardTitle h4 {
+  margin: 0;
+}
+
 .BasicCharacterCard:hover .BasicCardTitle {
   background-color: $active_color;
 }
