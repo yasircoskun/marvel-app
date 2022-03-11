@@ -72,7 +72,7 @@ class CharacterList extends React.Component {
             );
           })}
         </div>
-        {this.state.loading && <h1 className='Loading'>Loading..<br /><img src='/search.gif' alt=''/></h1>}
+        {this.state.loading && <h1 className='Loading'>Loading..<br /><img src='/red_search.gif' alt=''/></h1>}
       </>);
   }
 }
