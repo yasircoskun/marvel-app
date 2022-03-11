@@ -49,14 +49,18 @@ aside.drawer.open {
 }
 
 .drawerButton {
+  position: absolute;
   opacity: 1;
   display: block;
-  position: fixed;
   left: 1em;
   top: 1em;
   background-color: $marvel_red;
   padding: 0.5rem;
   border: 2px solid $marvel_red_2;
+}
+
+.drawerButton.fixed{
+  position: fixed;
 }
 
 @keyframes drawerButtonVisible {
