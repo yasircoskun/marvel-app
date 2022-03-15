@@ -1,0 +1,11 @@
+.AppContainer > .Favorites {
+  transform: translateY(-30vh);
+  padding: 0 15vw;
+}
+
+.Favorites{
+  a {
+    color: white !important;
+    text-decoration: none;
+  }
+}

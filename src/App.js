@@ -5,7 +5,7 @@ import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import Search from './pages/Search';
 import About from './pages/About';
-import Favorites from './pages/Favorites';
+import FavoritesPage from './pages/Favorites';
 import Comics from './pages/Comics';
 import './styles/main.scss'
 
@@ -24,7 +24,7 @@ class App extends React.Component {
             <Route path="comics/:characterID" element={<Comics />} />
             <Route path="search" element={<Search />} />
             <Route path="about" element={<About />} />
-            <Route path="favorites" element={<Favorites />} />
+            <Route path="favorites" element={<FavoritesPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

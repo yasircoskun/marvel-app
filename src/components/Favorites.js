@@ -3,12 +3,13 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { selectFavs } from './../redux/reducers/favsReducer';
 import CharacterCard from './CharacterCard';
+import './../styles/components/Favorites.scss'
 
 const Favorites = (props) => {
   var favs = useSelector(selectFavs);
 
   if(Object.keys(favs).length !== 0){
-    return (<>
+    return (<div className='Favorites'>
       <h1 style={{textAlign: 'center'}}><Link to="/favorites">Your Favorites</Link></h1>
         <div className='CharacterList' style={{padding: 0, overflowY: 'auto', height: 'calc(100% - 24rem)'}}>
           {Object.keys(favs).reverse().map(key => 
@@ -20,7 +21,7 @@ const Favorites = (props) => {
             ></CharacterCard>
           )}
         </div>
-    </>)
+    </div>)
   }else{
     return (<>
     <h1 style={{textAlign: 'center'}}><Link to="/favorites">Your Favorites</Link></h1>
