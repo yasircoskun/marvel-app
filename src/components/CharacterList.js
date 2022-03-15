@@ -12,7 +12,12 @@ const CharacterList = (props) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    // Component Did Mount
     setOffset(Number(window.localStorage.getItem('offset')) || 0);
+    return () => {
+      // Component Will Unmount
+      window.onscroll = null;
+    }
   }, [])
 
   useEffect(() => {
