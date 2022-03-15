@@ -36,6 +36,7 @@ a:hover, a:link, a:visited, a:active {
   color: $marvel_logo_white;
   //translate: 0 -15vh;
   transform: translateY(-15vh);
+  position: relative;
 }
 
 .Loading {

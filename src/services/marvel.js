@@ -14,6 +14,7 @@ async function getCharacters(offset) {
     params: {
       offset: offset,
       limit: 30,
+      ts: ts,
       apikey: config.apikey,
       hash: md5(ts + config.apisecret + config.apikey)
     },
@@ -25,6 +26,7 @@ async function getCharacterById(characterID) {
   return await axios.get(marvel_api_base + 'characters/' + characterID, {
     params: {
       apikey: config.apikey,
+      ts: ts,
       hash: md5(ts + config.apisecret + config.apikey)
     },
     headers: marvel_api_headers
@@ -37,6 +39,7 @@ async function getComicsByCharacterId(characterID) {
       limit: 10,
       orderBy: 'focDate',
       apikey: config.apikey,
+      ts: ts,
       hash: md5(ts + config.apisecret + config.apikey)
     },
     headers: marvel_api_headers
@@ -50,6 +53,7 @@ async function getCharacterByNameStartWith(query, offset) {
       nameStartsWith: query,
       apikey: config.apikey,
       limit: 30,
+      ts: ts,
       hash: md5(ts + config.apisecret + config.apikey)
     },
     headers: marvel_api_headers

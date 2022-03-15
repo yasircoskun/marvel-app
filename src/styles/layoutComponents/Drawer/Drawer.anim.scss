@@ -52,6 +52,24 @@
   }
 }
 
+@keyframes drawerCloseNextElementsAnim {
+  0% {
+    margin-left: 300px;
+  }
+  100% {
+    margin-left: 0;
+  }
+}
+
+@keyframes drawerOpenNextElementsAnim {
+  0% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: 300px;
+  }
+}
+
 aside.drawer.close {
   animation: drawerCloseAnim 2s;
   animation-fill-mode: forwards;
@@ -60,6 +78,32 @@ aside.drawer.close {
 aside.drawer.open {
   animation: drawerOpenAnim 2s;
   animation-fill-mode: forwards;
+}
+
+aside.drawer.stack.close{
+  animation: drawerCloseAnim 2s;
+  animation-fill-mode: forwards;
+  + .AppContainer {
+    animation: drawerCloseNextElementsAnim 2s;
+    animation-fill-mode: forwards;
+    + .bottombar{
+      animation: drawerCloseNextElementsAnim 2s;
+      animation-fill-mode: forwards;
+    }
+  }
+}
+
+aside.drawer.stack.open{
+  animation: drawerOpenAnim 2s;
+  animation-fill-mode: forwards;
+  + .AppContainer, .bottombar {
+    animation: drawerOpenNextElementsAnim 2s;
+    animation-fill-mode: forwards;
+    + .bottombar{
+      animation: drawerOpenNextElementsAnim 2s;
+      animation-fill-mode: forwards;
+    }
+  }
 }
 
 .drawerButton.visible {

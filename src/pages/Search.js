@@ -1,87 +1,88 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import marvel from '../services/marvel';
-import BasicCharacterCard from './../components/BasicCharacterCard';
+import CharacterCard from './../components/CharacterCard';
 
-class Search extends React.Component {
-  constructor(props) {
-    super(props);
-    this.searchBtnRef = React.createRef();
-    this.queryRef = React.createRef();
-    //this.searchBtnRefClicked = this.searchBtnRefClicked.bind(this);
-    this.state = {
-      query: null,
-      result: [],
-      offset: 0,
-      loading: false
-    }
+const Search = (props) => {
+  const searchBtnRef = React.createRef();
+  const queryRef = React.createRef();
+  const [query, setQuery] = useState(null);
+  // const [result, setResult] = useState([]);
+  // const [offset, setOffset] = useState(0);
+  // const [loading, setLoading] = useState(false);
+  const [endOfPage, setEndOfPage] = useState(false);
+  const [state, setState] = useState({
+    loading: false,
+    offset: 0,
+    result: []
+  })
+
+  async function search(){
+    setQuery(queryRef.current.value)
   }
 
-  async search(){
-    await this.setState({ query: this.queryRef.current.value });
-    await this.getSearchResult()
-  }
-
-  async getSearchResult() {
-    if(!this.state.loading){
-      this.setState({loading: true})
-
-      const response = await marvel.getCharacterByNameStartWith(this.state.query, this.state.offset)
-
-      let that = this;
-      setTimeout(()=>{
-        that.setState({ result: [...that.state.result, ...response.data.data.results], offset: this.state.offset += 30, loading: false });
-      }, 1500);
-    }
-  }
-
-  async componentWillUnmount(){
-    window.onscroll = null;
-  }
-
-  async componentDidMount() {
-    var that = this;
-    // Scroll Bottom Detection
-    window.onscroll = async function (ev) {
-      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-        if(that.state.query != null)
-        that.getSearchResult();
-        //window.scrollTo(0, 0);
+  useEffect(()=>{
+    async function getSearchResult() {
+      if(!state.loading){
+        setState({
+          loading: true,
+          offset: state.offset,
+          result: state.result
+        })
+        const response = await marvel.getCharacterByNameStartWith(query, state.offset)
+        setState({
+          loading: false,
+          offset: state.offset + 30,
+          result: [...state.result, ...response.data.data.results]
+        })
+        
+        if(response.data.data.results.length === 0){
+          setEndOfPage(true);
+          window.onscroll = null;
+        }
       }
-    };
-  }
-
-  render() {
-    if(this.state.query == null){
-      return (
-        <>
-          <h1>Search Page</h1>
-          <input ref={this.queryRef} type="text" placeholder='Search Term'></input>
-          <button ref={this.searchBtnRef} onClick={this.search.bind(this)}>Search</button>
-        </>
-      )
-    }else{
-        console.log(this.state.result)
-        return (<>
-          <div className='BasicCharacterList'>
-            {this.state.result.map(charater => {
-              return (
-                <Link to={"/comics/"+charater.id}>
-                  <BasicCharacterCard
-                    key={charater.id}
-                    name={charater.name}
-                    characterID={charater.id}
-                    data={charater}
-                  ></BasicCharacterCard>
-                </Link>
-              );
-            })}
-          </div>
-          {this.state.loading && <h1 className='Loading'>Loading..<br /><img src='/red_search.gif' alt=''/></h1>}
-        </>);
-
     }
 
+    window.onscroll = () => {
+      if (!state.loading) {
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {      
+          getSearchResult();
+        }
+      }
+    }
+
+    if(query != null && state.result.length === 0 && !endOfPage){
+      getSearchResult()
+    }
+  },[query, state, endOfPage])
+
+
+  if(query == null){
+    return (<>
+      <h1>Search Page</h1>
+      <input ref={queryRef} type="text" placeholder='Search Term'></input>
+      <button ref={searchBtnRef} onClick={()=>{search()}}>Search</button>
+    </>)
+  }else{
+    return (<>
+      {(query != null) &&
+        <div className='CharacterList'>
+          {state.result.map(charater => {
+            return (
+              <CharacterCard key={charater.id + "_search_" + Number(new Date())}
+                name={charater.name}
+                characterID={charater.id}
+                data={charater}
+              ></CharacterCard>
+            );
+          })}
+        </div>
+      }
+      {state.loading && <h1 className='Loading'>Loading..<br /><img src='/red_search.gif' alt=''/></h1>}
+      {endOfPage && <>
+        <h1>End of The Universe</h1>
+        <button onClick={()=>{window.location.reload()}}>New Search</button>
+      </>}
+    </>);
   }
 }
 

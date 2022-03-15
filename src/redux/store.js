@@ -1,8 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit'
-//import counterReducer from '../features/counter/counterSlice'
+import { configureStore } from '@reduxjs/toolkit';
+import favsReducer from './reducers/favsReducer';
+import characterListReducer from './reducers/characterListReducer';
 
 export default configureStore({
   reducer: {
-    counter: 0// counterReducer,
+    favs: favsReducer,
+    characterList: characterListReducer,
   },
-})
+});

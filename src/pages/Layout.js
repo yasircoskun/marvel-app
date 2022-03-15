@@ -6,12 +6,13 @@ import Drawer from './layoutComponents/Drawer';
 const Layout = () => {
   return (
     <>
-      <Header />
+      
       <Drawer />
       <div className='AppContainer'>
+        <Header />
         <Outlet />
       </div>
-      {/* <BottomBar /> */}
+      <BottomBar />
     </>
   )
 };
