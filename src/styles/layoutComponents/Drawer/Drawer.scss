@@ -8,6 +8,9 @@ aside.drawer {
   color: white;
   z-index: 3;
   border-right: 2px solid $drawer_border;
+  h1, h2, h3, h4, h5, h6 {
+    color: white;
+  }
   .drawerWrapper {
     position: relative;
     height: 100vh;
