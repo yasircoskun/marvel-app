@@ -1,9 +1,12 @@
+#root > .CharacterList{
+  transform: translateY(-15vh);
+}
+
 .CharacterList {
   display: flex;
   flex-wrap: wrap;
   padding: 0 15vw;
   justify-content: center;
-  transform: translateY(-15vh);
   .CharacterCard {
     position: relative;
     padding: 0;
@@ -74,13 +77,13 @@
     span {
       color: white;
     }
-    span.faved {
-      color: $blood_color;
-    }
-    span:hover {
-      color: $blood_color !important;
-      stroke: $blood_color !important;
-      fill: $blood_color !important;
-    }
+    // span.faved {
+    //   color: $blood_color;
+    // }
+    // span:hover {
+    //   color: $blood_color !important;
+    //   stroke: $blood_color !important;
+    //   fill: $blood_color !important;
+    // }
   }
 }
