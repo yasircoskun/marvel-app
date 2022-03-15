@@ -1,7 +1,20 @@
-$marvel_red: #000000;
-$marvel_red_2: rgb(19, 19, 19);
-$marvel_logo_white: #ffffff;
+
+
+
+
+
+// Header
+$header_height: 35vw;
+
+// Character Card
 $active_color: rgb(135, 10, 10);
 $active_color_transparent: rgba(135, 10, 10, .7);
-$header_height: 35vw;
-$blood_color: #800000; // Web Safe Blood Color Code
+$blood_color: #800000; // Web Safe Blood Color Code for Hearth Icon
+
+// BottomBar
+$bottombar_background: #000000;
+$bottombar_border: rgb(19, 19, 19);
+
+// Drawer
+$drawer_background: #000000;
+$drawer_border: rgb(19, 19, 19);

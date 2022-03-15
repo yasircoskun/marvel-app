@@ -3,9 +3,9 @@ nav.bottombar {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: $marvel_red;
-  color: $marvel_logo_white;
-  border-top: 2px solid $marvel_red_2;
+  background-color: $bottombar_background;
+  color: white;
+  border-top: 2px solid $bottombar_border;
   display: none;
   ul {
     display: flex;
@@ -17,11 +17,11 @@ nav.bottombar {
       display: inline-flex;
       padding: 0.4rem 1rem;
       a {
-        color: $marvel_logo_white;
+        color: white;
       }
     }
     li:hover {
-      background-color: $marvel_red_2;
+      background-color: $bottombar_background;
     }
   }
 }

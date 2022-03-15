@@ -4,10 +4,10 @@ aside.drawer {
   top: 0;
   bottom: 0;
   width: 300px;
-  background-color: $marvel_red;
-  color: $marvel_logo_white;
+  background-color: $drawer_background;
+  color: white;
   z-index: 3;
-  border-right: 2px solid $marvel_red_2;
+  border-right: 2px solid $drawer_border;
   .drawerWrapper {
     position: relative;
     height: 100vh;
@@ -31,7 +31,7 @@ aside.drawer {
         text-align: center;
         a {
           display: flex;
-          color: $marvel_logo_white;
+          color: white;
           span,
           div {
             display: inline-flex;
@@ -42,13 +42,13 @@ aside.drawer {
         }
       }
       li:hover {
-        background-color: $marvel_red_2;
+        background-color: $drawer_background;
       }
     }
     .drawerLogo {
       text-align: center;
       padding: 1rem;
-      border-bottom: 2px solid $marvel_red_2;
+      border-bottom: 2px solid $drawer_border;
       margin-bottom: 1rem;
       img {
         width: 60%;
@@ -62,7 +62,7 @@ aside.drawer {
       display: flex;
       justify-content: center;
       padding: 1rem 0;
-      border-top: 2px solid $marvel_red_2;
+      border-top: 2px solid $drawer_border;
       img {
         width: 30%;
       }
@@ -81,9 +81,9 @@ aside.drawer {
   display: block;
   left: 1em;
   top: 1em;
-  background-color: $marvel_red;
+  background-color: $drawer_background;
   padding: 0.5rem;
-  border: 2px solid $marvel_red_2;
+  border: 2px solid $drawer_border;
   z-index: 2;
 }
 
