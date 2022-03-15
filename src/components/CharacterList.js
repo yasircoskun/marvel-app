@@ -17,7 +17,6 @@ const CharacterList = (props) => {
     setOffset(Number(window.localStorage.getItem('offset')) || 0);
     return () => {
       // Component Will Unmount
-      CharacterListRef.current.onscroll = null;
     }
   }, [])
 
@@ -61,8 +60,8 @@ const CharacterList = (props) => {
             ></CharacterCard>
           );
         })}
+        {loading && <h1 className='Loading'>Loading..<br /><img src='/red_search.gif' alt='' /></h1>}
       </div>
-      {loading && <h1 className='Loading'>Loading..<br /><img src='/red_search.gif' alt='' /></h1>}
     </>
   );
 }

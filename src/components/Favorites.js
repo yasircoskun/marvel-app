@@ -11,7 +11,7 @@ const Favorites = (props) => {
   if(Object.keys(favs).length !== 0){
     return (<div className='Favorites'>
       <h1 style={{textAlign: 'center'}}><Link to="/favorites">Your Favorites</Link></h1>
-        <div className='CharacterList' style={{padding: 0, overflowY: 'auto', height: 'calc(100% - 24rem)'}}>
+        <div className='CharacterList'>
           {Object.keys(favs).reverse().map(key => 
             <CharacterCard
               key={favs[key].characterID + "_favorites_" + Number(new Date())}
