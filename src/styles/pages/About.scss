@@ -1,7 +1,7 @@
 @import "./../variables.scss";
 
 .About {
-  transform: translateY(-13vw);
+  transform: translateY(-21vw);
   margin: 0.2rem 20vw;
   h3 {
     margin-top: 3rem;
@@ -109,7 +109,7 @@
 
 @media (max-width: 768px) {
   .About {
-    transform: translateY(-0%);
+    transform: translateY(-5%);
     margin: 0.2rem 0.2rem;
     .OSINT ul {
       display: flex;

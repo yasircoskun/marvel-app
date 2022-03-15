@@ -1,7 +1,7 @@
 @import "./../variables.scss";
 
 .Comics {
-  transform: translateY(-15%);
+  transform: translateY(-35%);
   margin: .2rem 20vw;
   h3 {
     margin-top: 3rem;
@@ -45,7 +45,7 @@
 
 @media (max-width: 768px) {
   .Comics {
-    transform: translateY(-5%);
+    transform: translateY(-20%);
     margin: .2rem .2rem;
     ul{
       width: auto;
