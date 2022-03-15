@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { marked } from 'marked';
 import about_services from '../services/about';
 import './../styles/pages/About.scss';
-import { use } from 'marked';
 
 const About = () => {
   const author = "Yasir Coşkun"
