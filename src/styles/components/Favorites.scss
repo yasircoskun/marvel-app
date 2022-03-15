@@ -1,11 +1,19 @@
 .AppContainer > .Favorites {
   transform: translateY(-30vh);
   padding: 0 15vw;
+  height: auto;
 }
 
 .Favorites{
+  padding: 0px;
+  height: calc(100% - 23rem);
   a {
     color: white !important;
     text-decoration: none;
+  }
+  .CharacterList{
+    padding: 0px;
+    overflow-y: auto;
+    height: calc(100% - 1rem);
   }
 }
