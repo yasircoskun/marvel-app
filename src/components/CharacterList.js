@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { createRef, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import CharacterCard from './CharacterCard';
@@ -8,6 +8,7 @@ import { selectCharacterList, concat} from '../redux/reducers/characterListReduc
 const CharacterList = (props) => {
   var characterList = useSelector(selectCharacterList);
   const dispatch = useDispatch()
+  const CharacterListRef = createRef();
   const [offset, setOffset] = useState(0);
   const [loading, setLoading] = useState(false);
 
@@ -16,7 +17,7 @@ const CharacterList = (props) => {
     setOffset(Number(window.localStorage.getItem('offset')) || 0);
     return () => {
       // Component Will Unmount
-      window.onscroll = null;
+      CharacterListRef.current.onscroll = null;
     }
   }, [])
 
@@ -37,19 +38,19 @@ const CharacterList = (props) => {
       getCharacters()
     }
 
-    window.onscroll = () => {
+    CharacterListRef.current.onscroll = () => {
       if (!loading) {
-        if ((window.innerHeight + window.scrollY + 50) >= document.body.offsetHeight) {
+        if ((CharacterListRef.current.scrollTop + CharacterListRef.current.clientHeight + 50) >= CharacterListRef.current.scrollHeight) {
           getCharacters();
         }
       }
     }
-  }, [loading, offset, characterList, dispatch])
+  }, [loading, offset, characterList, dispatch, CharacterListRef])
 
   if(typeof characterList.map !== "function" ) return (<></>)
   return (
     <>
-      <div className='CharacterList'>
+      <div ref={CharacterListRef} className='CharacterList'>
         {characterList.map(charater => {
           return (
             <CharacterCard

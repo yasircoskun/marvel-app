@@ -1,5 +1,12 @@
 #root > .AppContainer > .CharacterList{
-  transform: translateY(-30vh);
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10vh 15vw 0vh 15vw;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  overflow: auto;
+  height: 90vh;
 }
 
 .CharacterList {
