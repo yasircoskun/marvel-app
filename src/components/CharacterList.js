@@ -1,68 +1,64 @@
-import React from 'react';
-import BasicCharacterCard from './BasicCharacterCard';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+import CharacterCard from './CharacterCard';
 import marvel from '../services/marvel'
+import { selectCharacterList, concat} from '../redux/reducers/characterListReducer';
 
-class CharacterList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { charaters: [], offset: 0, loading: false };
-  }
+const CharacterList = (props) => {
+  var characterList = useSelector(selectCharacterList);
+  const dispatch = useDispatch()
+  const [offset, setOffset] = useState(0);
+  const [loading, setLoading] = useState(false);
 
-  async getCharacters() {
-    if (!this.state.loading) {
-      this.setState({ loading: true })
-      const response = await marvel.getCharacters(this.state.offset);
+  useEffect(() => {
+    setOffset(Number(window.localStorage.getItem('offset')) || 0);
+  }, [])
 
-      let that = this;
-      setTimeout(() => {
-        that.setState({
-          charaters: [...this.state.charaters, ...response.data.data.results],
-          offset: this.state.offset += 30,
-          loading: false
+  useEffect(() => {
+    async function getCharacters() {
+      if (!loading) {
+        setLoading(true);
+        marvel.getCharacters(offset).then(response => {
+          dispatch(concat(response.data.data.results))
+          window.localStorage.setItem('offset', JSON.stringify(offset + 30));
+          setOffset((Number(offset) + Number(30)))
+          setLoading(false)
         });
-        console.log(this.state.charaters)
-      }, 1500);
+      }
     }
-  }
 
-  async componentWillUnmount(){
-    window.onscroll = null;
-  }
+    if(characterList.length === 0){
+      getCharacters()
+    }
 
-  async componentDidMount() {
-    this.getCharacters()
-    let that = this;
-    // Scroll Bottom Detection
-    window.onscroll = async function (ev) {
-      if (!that.state.loading) {
-        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-          that.getCharacters();
-          //window.scrollTo(0, 0);
+    window.onscroll = () => {
+      if (!loading) {
+        if ((window.innerHeight + window.scrollY + 50) >= document.body.offsetHeight) {
+          getCharacters();
         }
       }
-    };
-  }
+    }
+  }, [loading, offset, characterList, dispatch])
 
-  render() {
-    return (<>
-      <div className='BasicCharacterList'>
-        {this.state.charaters.map(charater => {
+  if(typeof characterList.map !== "function" ) return (<></>)
+  return (
+    <>
+      <div className='CharacterList'>
+        {characterList.map(charater => {
           return (
-            <Link to={"/comics/" + charater.id}>
-              <BasicCharacterCard
-                key={charater.id}
-                name={charater.name}
-                characterID={charater.id}
-                data={charater}
-              ></BasicCharacterCard>
-            </Link>
+            <CharacterCard
+              key={charater.id + "_mainList_" + Number(new Date())}
+              name={charater.name}
+              characterID={charater.id}
+              data={charater}
+            ></CharacterCard>
           );
         })}
       </div>
-      {this.state.loading && <h1 className='Loading'>Loading..<br /><img src='/red_search.gif' alt='' /></h1>}
-    </>);
-  }
+      {loading && <h1 className='Loading'>Loading..<br /><img src='/red_search.gif' alt='' /></h1>}
+    </>
+  );
 }
 
 export default CharacterList;

@@ -6,6 +6,7 @@ nav.bottombar {
   background-color: $marvel_red;
   color: $marvel_logo_white;
   border-top: 2px solid $marvel_red_2;
+  display: none;
   ul {
     display: flex;
     flex-wrap: nowrap;
@@ -22,5 +23,11 @@ nav.bottombar {
     li:hover {
       background-color: $marvel_red_2;
     }
+  }
+}
+
+@media (max-width: 768px) {
+  nav.bottombar {
+    display: block;
   }
 }

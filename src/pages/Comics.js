@@ -1,48 +1,40 @@
 import { useParams } from "react-router-dom";
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Thumbnail from "../components/Thumbnail";
 import marvel from '../services/marvel'
 import './../styles/pages/Comics.scss';
 
-class ComicsComponent extends React.Component {
-  state={
-    comics: [],
-    character: {}
-  }
+const Comics = (props) => {
+  const { characterID } = useParams()
+  const [character, setCharacter] = useState({})
+  const [comics, setComics] = useState([])
 
-  async getCharacter(characterID) {
-    this.setState({ loading: true })
-    const response = await marvel.getCharacterById(characterID);
-    this.setState({
-      character: response.data.data.results[0],
-    });
-  }
+  useEffect(()=>{
+    async function getCharacter(characterID) {
+      const response = await marvel.getCharacterById(characterID);
+      setCharacter(response.data.data.results[0]);
+    }
+    async function getComics(characterID) {
+      const response = await marvel.getComicsByCharacterId(characterID)
+      setComics(response.data.data.results);
+    }
+    getCharacter(characterID)
+    getComics(characterID)
+  }, [characterID])
 
-  async getComics(characterID) {
-    this.setState({ loading: true })
-    const response = await marvel.getComicsByCharacterId(characterID)
-    this.setState({
-      comics: [...response.data.data.results],
-    });
-  }
-
-  async componentDidMount() {
-    this.getComics(this.props.params.charaterID)
-    this.getCharacter(this.props.params.charaterID)
-  }
-
-  render() {
-    return (<div className="Comics">
-      <Thumbnail data={this.state.character.thumbnail}></Thumbnail>
-      <h1>{this.state.character.name}</h1>
-      <p>{this.state.character.description}</p>
-      <h3>Comics featuring the character "{this.state.character.name}":</h3>
+  if(character === {} || typeof character === "undefined" || typeof comics === "undefined" || typeof comics.map !== "function") return (<></>)
+  return (
+    <div className="Comics">
+      <Thumbnail data={character.thumbnail}></Thumbnail>
+      <h1>{character.name}</h1>
+      <p>{character.description}</p>
+      <h3>Comics featuring the character "{character.name}":</h3>
       <ul>
       
-        {this.state.comics.map(comic => {
+        {comics.map(comic => {
           return (
-            <li>
+            <li key={comic.id}>
               {comic.title}
             </li>
           )
@@ -50,15 +42,8 @@ class ComicsComponent extends React.Component {
       </ul>
 
       <button onClick={() => {window.history.back();}}>Back</button>
-    </div>)
-  }
+    </div>
+  )
 }
-
-const Comics = (props) => (
-  <ComicsComponent
-      {...props}
-      params={useParams()}
-  />
-);
 
 export default Comics;

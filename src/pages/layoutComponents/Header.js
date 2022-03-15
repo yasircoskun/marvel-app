@@ -1,15 +1,7 @@
-import React from "react";
-
-class BottomBar extends React.Component {
-  state={
-    signedIn: false
-  }
-
-  render(){
+const Header = () => {
     return (
       <div className="Header"></div>
     );
-  }
-}
+};
 
-export default BottomBar;
+export default Header;

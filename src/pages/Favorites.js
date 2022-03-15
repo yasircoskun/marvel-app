@@ -1,14 +1,7 @@
-import React from 'react';
+import Favorites from "../components/Favorites";
 
-class Favorites extends React.Component {
-
-  state={
-    resource: null
-  }
-
-  render() {
-    return (<h1>Favorites Page</h1>)
-  }
+const FavoritesPage = (props) => {
+  return (<Favorites></Favorites>)
 }
 
-export default Favorites;
+export default FavoritesPage;
