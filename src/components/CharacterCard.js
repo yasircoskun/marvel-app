@@ -21,7 +21,6 @@ const CharacterCard = (props) => {
     data: props.data
   }
 
-  //console.log(props)
   return (
     <div id={props.characterID} className="CharacterCard">
       <Link key={props.characterID + "_Link_"} to={"/comics/" + props.characterID}>
