@@ -26,7 +26,7 @@ const Comics = (props) => {
   if(character === {} || typeof character === "undefined" || typeof comics === "undefined" || typeof comics.map !== "function") return (<></>)
   return (
     <div className="Comics">
-      <Thumbnail data={character.thumbnail}></Thumbnail>
+      <Thumbnail imageURL={character.thumbnail.path + "/portrait_incredible." + character.thumbnail.extension}></Thumbnail>
       <h1>{character.name}</h1>
       <p>{character.description}</p>
       <h3>Comics featuring the character "{character.name}":</h3>

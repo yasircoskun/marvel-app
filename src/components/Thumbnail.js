@@ -1,12 +1,12 @@
 import React from 'react';
 
 const Thumbnail = (props) => {
-  if (props.data == null) {
+  if (props.imageURL == null) {
     return (<></>)
   }
   return (
     <div className='Thumbnail'>
-      <img src={props.data.path + "/portrait_incredible." + props.data.extension} alt="..."></img>
+      <img src={props.imageURL} alt="..."></img>
     </div>
   )
 }

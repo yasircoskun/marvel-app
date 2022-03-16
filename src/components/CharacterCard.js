@@ -21,7 +21,7 @@ const CharacterCard = (props) => {
   return (
     <div key={props.characterID + "_CharacterCard"} className="CharacterCard">
       <Link key={props.characterID + "_Link_" + Number(new Date())} to={"/comics/" + props.characterID}>
-        <Thumbnail data={props.data.thumbnail}></Thumbnail>
+        <Thumbnail imageURL={props.data.thumbnail.path + "/portrait_incredible." + props.data.thumbnail.extension}></Thumbnail>
         <div className='CardTitle'><h4>{props.name}</h4></div>
       </Link>
       <div className='HearthIcon' onClick={() => {
