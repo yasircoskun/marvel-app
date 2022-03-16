@@ -53,7 +53,7 @@ const CharacterList = (props) => {
         {characterList.map(charater => {
           return (
             <CharacterCard
-              key={charater.id + "_mainList_" + Number(new Date())}
+              key={charater.id + "_mainList"}
               name={charater.name}
               characterID={charater.id}
               data={charater}

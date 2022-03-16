@@ -9,30 +9,17 @@ const CharacterCard = (props) => {
   const dispatch = useDispatch()
   // faved as default is if favs has a property
   const [faved, setFaved] = useState(favs.hasOwnProperty(props.name));
-  const delProp = props
-  const addProp = props
-
-  useEffect(() => {
-    if (Object.keys(favs).indexOf(props.name) >= 0) {
-      setFaved(true);
-    }
-  }, [favs, props, faved]);
 
   return (
-    <div key={props.characterID + "_CharacterCard"} className="CharacterCard">
-      <Link key={props.characterID + "_Link_" + Number(new Date())} to={"/comics/" + props.characterID}>
+    <div id={props.characterID} className="CharacterCard">
+      <Link key={props.characterID + "_Link_"} to={"/comics/" + props.characterID}>
         <Thumbnail imageURL={props.data.thumbnail.path + "/portrait_incredible." + props.data.thumbnail.extension}></Thumbnail>
         <div className='CardTitle'><h4>{props.name}</h4></div>
       </Link>
       <div className='HearthIcon' onClick={() => {
-          if(faved){
-            dispatch(del(delProp));
-            setFaved(false)
-          }else{
-            dispatch(add(addProp)); 
-            setFaved(true)
-          }
-        }}>
+        dispatch(faved ? del(props) : add(props))
+        setFaved(!faved)
+      }}>
         <span className={faved ? "faved" : ""}>{faved ? "❤️" : "🤍"}</span>
       </div>
     </div>

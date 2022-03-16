@@ -23,7 +23,7 @@ const Comics = (props) => {
     getComics(characterID)
   }, [characterID])
 
-  if(character === {} || typeof character === "undefined" || typeof comics === "undefined" || typeof comics.map !== "function") return (<></>)
+  if(character === {} || typeof character === "undefined" || typeof character.thumbnail === "undefined" || typeof comics === "undefined" || typeof comics.map !== "function") return (<></>)
   return (
     <div className="Comics">
       <Thumbnail imageURL={character.thumbnail.path + "/portrait_incredible." + character.thumbnail.extension}></Thumbnail>
@@ -31,7 +31,6 @@ const Comics = (props) => {
       <p>{character.description}</p>
       <h3>Comics featuring the character "{character.name}":</h3>
       <ul>
-      
         {comics.map(comic => {
           return (
             <li key={comic.id}>
@@ -40,7 +39,6 @@ const Comics = (props) => {
           )
         })}
       </ul>
-
       <button onClick={() => {window.history.back();}}>Back</button>
     </div>
   )

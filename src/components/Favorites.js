@@ -14,7 +14,7 @@ const Favorites = (props) => {
         <div className='CharacterList'>
           {Object.keys(favs).reverse().map(key => 
             <CharacterCard
-              key={favs[key].characterID + "_favorites_" + Number(new Date())}
+              key={favs[key].characterID + "_favorites"}
               name={favs[key].name}
               characterID={favs[key].characterID}
               data={favs[key].data}

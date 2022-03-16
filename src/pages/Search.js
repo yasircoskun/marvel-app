@@ -68,7 +68,7 @@ const Search = (props) => {
         <div className='CharacterList'>
           {state.result.map(charater => {
             return (
-              <CharacterCard key={charater.id + "_search_" + Number(new Date())}
+              <CharacterCard key={charater.id + "_search"}
                 name={charater.name}
                 characterID={charater.id}
                 data={charater}
