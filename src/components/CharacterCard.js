@@ -10,6 +10,18 @@ const CharacterCard = (props) => {
   // faved as default is if favs has a property
   const [faved, setFaved] = useState(favs.hasOwnProperty(props.name));
 
+  /* Warning: CharacterCard: `key` is not a prop. Trying to access it will 
+  result in `undefined` being returned. If you need to access the same value 
+  within the child component, you should pass it as a different prop. 
+  (https://reactjs.org/link/special-props) */
+  // props variable without key handler functions etc.
+  const clean_props = {
+    name: props.name, 
+    characterID: props.characterID,
+    data: props.data
+  }
+
+  //console.log(props)
   return (
     <div id={props.characterID} className="CharacterCard">
       <Link key={props.characterID + "_Link_"} to={"/comics/" + props.characterID}>
@@ -17,7 +29,7 @@ const CharacterCard = (props) => {
         <div className='CardTitle'><h4>{props.name}</h4></div>
       </Link>
       <div className='HearthIcon' onClick={() => {
-        dispatch(faved ? del(props) : add(props))
+        dispatch(faved ? del(clean_props) : add(clean_props))
         setFaved(!faved)
       }}>
         <span className={faved ? "faved" : ""}>{faved ? "❤️" : "🤍"}</span>
