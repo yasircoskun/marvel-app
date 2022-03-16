@@ -33,9 +33,7 @@ const CharacterCard = (props) => {
             setFaved(true)
           }
         }}>
-        {!faved && <span>🤍</span>}
-        {faved && <span className='faved'>❤️</span>}
-        
+        <span className={faved ? "faved" : ""}>{faved ? "❤️" : "🤍"}</span>
       </div>
     </div>
   );
