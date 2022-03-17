@@ -3,12 +3,23 @@ import { useSelector, useDispatch } from 'react-redux';
 import { add, del, selectFavs } from '../redux/reducers/favsReducer';
 import Thumbnail from './Thumbnail';
 import { Link } from 'react-router-dom';
+import proptype_checker from './../typechecker';
 
 const CharacterCard = (props) => {
   var favs = useSelector(selectFavs);
   const dispatch = useDispatch()
-  // faved as default is if favs has a property
   const [faved, setFaved] = useState(favs.hasOwnProperty(props.name));
+  const errors = proptype_checker({
+    characterID: Number,
+    name: String,
+    data: {
+      thumbnail: {
+        path: String,
+        extension: String,
+      }
+    }
+  }, props)
+  if(errors.length !== 0) return (<>Check Developer Tools Console in your browser</>)
 
   /* Warning: CharacterCard: `key` is not a prop. Trying to access it will 
   result in `undefined` being returned. If you need to access the same value 
@@ -20,7 +31,7 @@ const CharacterCard = (props) => {
     characterID: props.characterID,
     data: props.data
   }
-
+  
   return (
     <div id={props.characterID} className="CharacterCard">
       <Link key={props.characterID + "_Link_"} to={"/comics/" + props.characterID}>
