@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CharacterCard Case 1: if props is empty 1`] = `"Check Developer Tools Console in your browser"`;
+
+exports[`CharacterCard Case 2: if props contain only valid name 1`] = `"Check Developer Tools Console in your browser"`;
+
+exports[`CharacterCard Case 3: if props contain valid name and characterID 1`] = `"Check Developer Tools Console in your browser"`;
+
+exports[`CharacterCard Case 4: if props contain valid name, characterID and data 1`] = `
+<div
+  className="CharacterCard"
+  id={1}
+>
+  <a
+    href="/comics/1"
+    onClick={[Function]}
+  >
+    <div
+      className="Thumbnail"
+    >
+      <img
+        alt="..."
+        src="1/portrait_incredible."
+      />
+    </div>
+    <div
+      className="CardTitle"
+    >
+      <h4>
+        Michael Carleone
+      </h4>
+    </div>
+  </a>
+  <div
+    className="HeartIcon"
+    onClick={[Function]}
+  >
+    <span
+      className=""
+    >
+      🤍
+    </span>
+  </div>
+</div>
+`;
+
+exports[`CharacterCard Case 5: if props contain valid props and in the favorites list (store) 1`] = `
+<div
+  className="CharacterCard"
+  id={1009156}
+>
+  <a
+    href="/comics/1009156"
+    onClick={[Function]}
+  >
+    <div
+      className="Thumbnail"
+    >
+      <img
+        alt="..."
+        src="http://i.annihil.us/u/prod/marvel/i/mg/f/e0/526166076a1d0/portrait_incredible.jpg"
+      />
+    </div>
+    <div
+      className="CardTitle"
+    >
+      <h4>
+        Apocalypse
+      </h4>
+    </div>
+  </a>
+  <div
+    className="HeartIcon"
+    onClick={[Function]}
+  >
+    <span
+      className="faved"
+    >
+      ❤️
+    </span>
+  </div>
+</div>
+`;
+
+exports[`CharacterCard Case 6: if props contain valid props and not in the favorites list (store) 1`] = `
+<div
+  className="CharacterCard"
+  id={1009156}
+>
+  <a
+    href="/comics/1009156"
+    onClick={[Function]}
+  >
+    <div
+      className="Thumbnail"
+    >
+      <img
+        alt="..."
+        src="http://i.annihil.us/u/prod/marvel/i/mg/f/e0/526166076a1d0/portrait_incredible.jpg"
+      />
+    </div>
+    <div
+      className="CardTitle"
+    >
+      <h4>
+        Apocalypse
+      </h4>
+    </div>
+  </a>
+  <div
+    className="HeartIcon"
+    onClick={[Function]}
+  >
+    <span
+      className=""
+    >
+      🤍
+    </span>
+  </div>
+</div>
+`;

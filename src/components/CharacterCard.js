@@ -38,7 +38,7 @@ const CharacterCard = (props) => {
         <Thumbnail imageURL={props.data.thumbnail.path + "/portrait_incredible." + props.data.thumbnail.extension}></Thumbnail>
         <div className='CardTitle'><h4>{props.name}</h4></div>
       </Link>
-      <div className='HearthIcon' onClick={() => {
+      <div className='HeartIcon' onClick={() => {
         dispatch(faved ? del(clean_props) : add(clean_props))
         setFaved(!faved)
       }}>
